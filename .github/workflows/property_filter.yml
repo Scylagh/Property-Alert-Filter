@@ -2,7 +2,7 @@ name: Run Property Alert Filter
 
 on:
   schedule:
-    - cron: '15 15 * * *'  # Runs at 15:15 UTC daily (17:15 Johannesburg)
+    - cron: '15 13 * * *'  # Runs at 15:15 UTC daily (17:15 Johannesburg)
   workflow_dispatch:        # Allows manual trigger from the UI
 
 jobs:
