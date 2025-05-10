@@ -5,10 +5,11 @@ import requests
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+import os
 
-# ✅ Your Gmail credentials (App Password, no spaces)
-EMAIL = "skypropertydeals@gmail.com"
-PASSWORD = "gmnitmkedwwvkorj"
+# ✅ Your Gmail credentials (From secrets)
+EMAIL = os.environ["EMAIL"]
+PASSWORD = os.environ["PASSWORD"]
 IMAP_SERVER = "imap.gmail.com"
 
 # ✅ Keywords to detect renovation potential
