@@ -2,12 +2,13 @@ name: Run Property Alert Filter
 
 on:
   schedule:
-    - cron: '15 15 * * *'  # Runs at 15:15 UTC every day (17:15 Johannesburg time)
-  workflow_dispatch:      # Allows manual triggering from GitHub UI
+    - cron: '15 15 * * *'  # Runs daily at 15:15 UTC (17:15 Johannesburg)
+  workflow_dispatch:        # Allows manual trigger
 
 jobs:
   run-script:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
@@ -21,8 +22,14 @@ jobs:
         run: |
           pip install requests beautifulsoup4
 
+      - name: Debug env
+        run: echo "EMAIL is $EMAIL"
+        env:
+          EMAIL: ${{ secrets.EMAIL }}
+
       - name: Run script
         env:
           EMAIL: ${{ secrets.EMAIL }}
           PASSWORD: ${{ secrets.PASSWORD }}
         run: python property_alert_filter.py
+
